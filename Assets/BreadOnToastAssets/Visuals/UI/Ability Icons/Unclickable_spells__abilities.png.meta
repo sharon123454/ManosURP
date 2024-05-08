@@ -1,0 +1,765 @@
+fileFormatVersion: 2
+guid: 989f9688db605eb4a94479021d255c92
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_0
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538c4b17a9ee0b347a6c8a66866515fc
+      internalID: -150702208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_1
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15386e8328d5507439fcb2a5c972d3e0
+      internalID: 1999486748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_2
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 603cf6719972b9f40bb02dbf05a5e944
+      internalID: 2081829071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_3
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cb3401735b81d45809746f10010f9b
+      internalID: 159492838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_4
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e693a944526c9db4fb6ccf112049acc3
+      internalID: -1666036214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_5
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 607
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c829bd838a3da64c9326e7548825f10
+      internalID: -407186129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_6
+      rect:
+        serializedVersion: 2
+        x: 1828
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb10b7f9e7eab8d4a95791df0569651e
+      internalID: 2056492411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_7
+      rect:
+        serializedVersion: 2
+        x: 2122
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498309088d7f9bc4ba43bea0f582181a
+      internalID: -570149244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_8
+      rect:
+        serializedVersion: 2
+        x: 2431
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ac8e7e5fe350a4fb852f9df992b17b
+      internalID: 323321371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_9
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3f5b49c638aa54296ff1ebb1ff91f0
+      internalID: 1748479686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_10
+      rect:
+        serializedVersion: 2
+        x: 3020
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41abee9b10e916443a52575a0ea83f30
+      internalID: -607899622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_11
+      rect:
+        serializedVersion: 2
+        x: 3331
+        y: 607
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87b127dc2099bb40b24b992509d1ce7
+      internalID: 71457906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_12
+      rect:
+        serializedVersion: 2
+        x: 3611
+        y: 607
+        width: 260
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29a7797b51d93149806e880bdc5db27
+      internalID: 1278875078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_13
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 320
+        width: 260
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e9d0df6cd5e9748ac110d5c90feed2
+      internalID: 510175961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_14
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1285164fafb1faf44aa9c326b148c0c0
+      internalID: 867219480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_15
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a250ed38b75503b4d9127858bc9cd5b2
+      internalID: 901310067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_16
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 933c19b8394ee3d409b4f1e19f486e33
+      internalID: 176707823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_17
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9155e3d2dba877c488c58374120bbfc5
+      internalID: 944394865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_18
+      rect:
+        serializedVersion: 2
+        x: 1481
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af486f6ed7ed06429c54fb94bc9cf41
+      internalID: -1517091275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_19
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366123f78148a4644be622e1f6fa00d3
+      internalID: 751135764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_20
+      rect:
+        serializedVersion: 2
+        x: 2047
+        y: 320
+        width: 261
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eca27e0fcd547d44b5d4fa23f9ba9c3
+      internalID: -536409038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_21
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc7aa9328b7a07409209c70727fa873
+      internalID: 71424770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_22
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5acbb8f7ddb80894bbe1f8ca04241aab
+      internalID: 1468022923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_23
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fedb0b9f073ab468acbe5931eb2ce5
+      internalID: 1804700462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_24
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c7b9da61153ca749a8f2238ffe26717
+      internalID: 766336675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_25
+      rect:
+        serializedVersion: 2
+        x: 1247
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6308de3f40b7c71408fc91226bc81074
+      internalID: -748437764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_26
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea49ca1b77e9cb40be2f266c1a85ad2
+      internalID: 759352305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_27
+      rect:
+        serializedVersion: 2
+        x: 1861
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3463df3f2b7c1b745ae11dcd0177126d
+      internalID: 1428082164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Unclickable_spells__abilities_28
+      rect:
+        serializedVersion: 2
+        x: 2168
+        y: 12
+        width: 261
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452d86d64ad0e0f40b9252e6db1f357c
+      internalID: 1115954733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Unclickable_spells__abilities_0: -150702208
+      Unclickable_spells__abilities_1: 1999486748
+      Unclickable_spells__abilities_10: -607899622
+      Unclickable_spells__abilities_11: 71457906
+      Unclickable_spells__abilities_12: 1278875078
+      Unclickable_spells__abilities_13: 510175961
+      Unclickable_spells__abilities_14: 867219480
+      Unclickable_spells__abilities_15: 901310067
+      Unclickable_spells__abilities_16: 176707823
+      Unclickable_spells__abilities_17: 944394865
+      Unclickable_spells__abilities_18: -1517091275
+      Unclickable_spells__abilities_19: 751135764
+      Unclickable_spells__abilities_2: 2081829071
+      Unclickable_spells__abilities_20: -536409038
+      Unclickable_spells__abilities_21: 71424770
+      Unclickable_spells__abilities_22: 1468022923
+      Unclickable_spells__abilities_23: 1804700462
+      Unclickable_spells__abilities_24: 766336675
+      Unclickable_spells__abilities_25: -748437764
+      Unclickable_spells__abilities_26: 759352305
+      Unclickable_spells__abilities_27: 1428082164
+      Unclickable_spells__abilities_28: 1115954733
+      Unclickable_spells__abilities_3: 159492838
+      Unclickable_spells__abilities_4: -1666036214
+      Unclickable_spells__abilities_5: -407186129
+      Unclickable_spells__abilities_6: 2056492411
+      Unclickable_spells__abilities_7: -570149244
+      Unclickable_spells__abilities_8: 323321371
+      Unclickable_spells__abilities_9: 1748479686
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

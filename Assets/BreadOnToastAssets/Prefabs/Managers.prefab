@@ -297,8 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171695910f176b04b8405120ad4b75ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridDebugObjectPrefab: {fileID: 0}
-  _gridDebugEnabled: 0
+  _gridDebugObjectPrefab: {fileID: 6370607194873716113, guid: 20de09bafd5197944a20d3c23fb39ec6,
+    type: 3}
+  _gridDebugEnabled: 1
   _levelGridWidth: 10
   _levelGridHeight: 10
   _levelGridCellSize: 2
@@ -506,7 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979807f7f5609d842a3cf41f4d1af02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gridSystemVisualSinglePrefab: {fileID: 0}
+  _gridSystemVisualSinglePrefab: {fileID: 4330554001003832270, guid: 6b041149303116b44afe1529aa43e339,
+    type: 3}
 --- !u!1 &8278598927479775258
 GameObject:
   m_ObjectHideFlags: 0

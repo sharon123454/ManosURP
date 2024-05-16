@@ -1,3 +1,4 @@
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 using System;
 
@@ -5,16 +6,16 @@ public class UnitSelectedVisual : MonoBehaviour
 {
     [SerializeField] private Unit _selectedVisualUnit;
 
-    private MeshRenderer _meshRenderer;
+    private DecalProjector _decalRenderer;
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _decalRenderer = GetComponent<DecalProjector>();
     }
     private void Start()
     {
         UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
-        _meshRenderer.enabled = false;
+        _decalRenderer.enabled = false;
     }
     private void OnDisable()
     {
@@ -27,12 +28,12 @@ public class UnitSelectedVisual : MonoBehaviour
         {
             if (UnitActionSystem.Instance.GetSelectedUnit() == _selectedVisualUnit)
             {
-                _meshRenderer.enabled = true;
+                _decalRenderer.enabled = true;
             }
             else
             {
-                if (_meshRenderer.enabled)
-                    _meshRenderer.enabled = false;
+                if (_decalRenderer.enabled)
+                    _decalRenderer.enabled = false;
             }
         }
         else

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GridSystemVisualSingle : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private UnityEngine.Rendering.Universal.DecalProjector _decalRenderer;
 
-    public void Show() { _meshRenderer.enabled = true; }
-    public void Hide() { _meshRenderer.enabled = false; }
+    public void Show() { if (_decalRenderer) _decalRenderer.enabled = true; }
+    public void Hide() { if (_decalRenderer) _decalRenderer.enabled = false; }
 
 }

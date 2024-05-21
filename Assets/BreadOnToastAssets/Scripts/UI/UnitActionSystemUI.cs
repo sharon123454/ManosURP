@@ -9,11 +9,11 @@ public class UnitActionSystemUI : MonoBehaviour
     [SerializeField] private Transform _actionButtonPrefab;
     [SerializeField] private Transform _buttonContainer;
 
-    private List<ActionButtonUI> _actionButtonUIList;
+    private List<SubActionSlotUI> _actionButtonUIList;
 
     private void Awake()
     {
-        _actionButtonUIList = new List<ActionButtonUI>();
+        _actionButtonUIList = new List<SubActionSlotUI>();
     }
     private void Start()
     {
@@ -68,7 +68,7 @@ public class UnitActionSystemUI : MonoBehaviour
     }
     private void UpdateSelectedButtonVisual()
     {
-        foreach (ActionButtonUI actionButton in _actionButtonUIList)
+        foreach (SubActionSlotUI actionButton in _actionButtonUIList)
         {
             actionButton.UpdateSelectedVisual();
         }
@@ -85,7 +85,7 @@ public class UnitActionSystemUI : MonoBehaviour
         foreach (BaseAction baseAction in selectedUnit.GetBaseActionArray())
         {
             Transform actionButtonTransform = Instantiate(_actionButtonPrefab, _buttonContainer);
-            ActionButtonUI actionButtonUI = actionButtonTransform.GetComponent<ActionButtonUI>();
+            SubActionSlotUI actionButtonUI = actionButtonTransform.GetComponent<SubActionSlotUI>();
             actionButtonUI.SetBaseAction(baseAction);
             _actionButtonUIList.Add(actionButtonUI);
         }

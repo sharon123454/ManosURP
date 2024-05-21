@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e69a5e729a8b41e43ab8403e16fad0ee
+guid: 95d3bb2641261b54d925086abfe7a62c
 ModelImporter:
-  serializedVersion: 21300
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Sword And Shield Ground Cast
+    second: Sword And Shield Run (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,19 +36,19 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sword And Shield Ground Cast
+      name: A_Run
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 89
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -56,7 +56,7 @@ ModelImporter:
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
-      mirror: 0
+      mirror: 1
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events: []
@@ -72,6 +72,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -99,6 +100,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -657,12 +659,14 @@ ModelImporter:
     - name: mixamorig:Spine1
       parentName: mixamorig:Spine
       position: {x: -4.5449755e-16, y: 0.0014014973, z: 0.0000000050850213}
-      rotation: {x: -0.0000000745058, y: -0.000000057869194, z: -0.000000020637684, w: 1}
+      rotation: {x: -0.0000000745058, y: -0.000000057869194, z: -0.000000020637684,
+        w: 1}
       scale: {x: 1.0000006, y: 0.9999981, z: 1.0000017}
     - name: mixamorig:Spine2
       parentName: mixamorig:Spine1
       position: {x: -1.9984014e-17, y: 0.001601627, z: -3.7252968e-11}
-      rotation: {x: 0.00000009685753, y: 0.000000026756812, z: 0.000000032564234, w: 1}
+      rotation: {x: 0.00000009685753, y: 0.000000026756812, z: 0.000000032564234,
+        w: 1}
       scale: {x: 1.0000005, y: 1.0000005, z: 1.0000019}
     - name: mixamorig:Neck
       parentName: mixamorig:Spine2
@@ -822,7 +826,8 @@ ModelImporter:
     - name: mixamorig:LeftHandPinky4
       parentName: mixamorig:LeftHandPinky3
       position: {x: 0.0000028501822, y: 0.00025644928, z: -0.000000039394944}
-      rotation: {x: -0.000000089406946, y: 0.000000029261933, z: -0.0000001253383, w: 1}
+      rotation: {x: -0.000000089406946, y: 0.000000029261933, z: -0.0000001253383,
+        w: 1}
       scale: {x: 1.000007, y: 1.0000044, z: 1.0000006}
     - name: mixamorig:LeftHandPinky4_end
       parentName: mixamorig:LeftHandPinky4
@@ -967,7 +972,8 @@ ModelImporter:
     - name: mixamorig:RightHandPinky4
       parentName: mixamorig:RightHandPinky3
       position: {x: -0.000003929995, y: 0.00028067123, z: -0.0000000084284695}
-      rotation: {x: -0.0000004246829, y: -0.000000057041035, z: 0.00000008963215, w: 1}
+      rotation: {x: -0.0000004246829, y: -0.000000057041035, z: 0.00000008963215,
+        w: 1}
       scale: {x: 0.9999983, y: 1.0000021, z: 1.0000031}
     - name: mixamorig:RightHandPinky4_end
       parentName: mixamorig:RightHandPinky4
@@ -1027,7 +1033,8 @@ ModelImporter:
     - name: mixamorig:RightToe_End
       parentName: mixamorig:RightToeBase
       position: {x: -4.773028e-11, y: 0.0007040958, z: 1.6298145e-11}
-      rotation: {x: -0.000000074505806, y: -0.000000014901161, z: 0.00000012665987, w: 1}
+      rotation: {x: -0.000000074505806, y: -0.000000014901161, z: 0.00000012665987,
+        w: 1}
       scale: {x: 0.99999917, y: 1, z: 1.0000039}
     - name: mixamorig:RightToe_End_end
       parentName: mixamorig:RightToe_End
@@ -1051,12 +1058,14 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 53f03942e34c70f429286072b7939030, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 53f03942e34c70f429286072b7939030,
+    type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 

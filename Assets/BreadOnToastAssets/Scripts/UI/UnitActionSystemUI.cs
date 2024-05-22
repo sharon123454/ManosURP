@@ -23,6 +23,10 @@ public class UnitActionSystemUI : MonoBehaviour
         UnitActionSystem.Instance.OnBusyChanged += UnitActionSystem_OnBusyChanged;
         UnitActionSystem.Instance.OnSelectedUnitChanged += UnitActionSystem_OnSelectedUnitChanged;
         UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+
+        //Temporary until combat map is loaded
+        _actionsUIParent.SetActive(false);
+        _actionsUIParent.SetActive(true);
     }
     private void OnDisable()
     {

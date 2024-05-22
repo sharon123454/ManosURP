@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     private const int BONUS_ACTION_POINT_MAX = 1;
 
     private GridPosition _currentGridPosition;
+    private HealthSystem _healthSystem;
     private MoveAction _moveAction;
     private SpinAction _spinAction;
     private BaseAction[] _baseActionArray;
@@ -37,6 +38,7 @@ public class Unit : MonoBehaviour
     {
         _moveAction = GetComponent<MoveAction>();
         _spinAction = GetComponent<SpinAction>();
+        _healthSystem = GetComponent<HealthSystem>();
         _baseActionArray = GetComponents<BaseAction>();
     }
     private void Start()
@@ -44,6 +46,7 @@ public class Unit : MonoBehaviour
         _currentGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddUnitAtGridPosition(_currentGridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
+        _healthSystem.OnUnitDeath += HealthSystem_OnUnitDeath;
     }
     //updates character movement
     void Update()
@@ -62,10 +65,18 @@ public class Unit : MonoBehaviour
     }
 
     public bool IsEnemy() { return _isEnemy; }
-    public void TakeDamage(out HitPositionType hitType)//Empty needs to connect to health system
+    public void TakeDamage(out HitPositionType hitType, int damageAmount)//Empty needs to connect to health system
     {
-        Debug.Log($"{name} took damage.");
+        //Give Action hit location (depends if hit)
         hitType = HitPositionType.Normal;
+
+        //If(conditions)
+
+        //Take Damage
+        _healthSystem.TakeDamage(damageAmount);
+
+        //Update visual (when action ended)
+
     }
     public int GetActionPoints() { return _actionPoints; }
     public int GetBonusActionPoints() { return _bonusActionPoints; }
@@ -142,6 +153,11 @@ public class Unit : MonoBehaviour
             _bonusActionPoints = BONUS_ACTION_POINT_MAX;
             OnAnyActionPointsChanged?.Invoke(this, EventArgs.Empty);
         }
+    }
+    private void HealthSystem_OnUnitDeath(object sender, EventArgs e)
+    {
+        //Remove unit from grid
+        LevelGrid.Instance.RemoveUnitAtGridPosition(GetGridPosition(), this);
     }
 
 }

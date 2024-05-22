@@ -75,7 +75,7 @@ public class RangeAction : BaseAction
     private void Shoot()
     {
         HitPositionType hitType;
-        _targetUnit.TakeDamage(out hitType);
+        _targetUnit.TakeDamage(out hitType, _actionDamage);
 
         OnShoot?.Invoke(this, new OnShootEventArgs()
         {

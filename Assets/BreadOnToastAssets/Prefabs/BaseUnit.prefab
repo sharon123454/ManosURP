@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4425424782181850269}
   - component: {fileID: 9190652655035294752}
   - component: {fileID: 922342966035068306}
+  - component: {fileID: 5793145004263050706}
   - component: {fileID: 2084613681901593162}
   - component: {fileID: 9084521950298377432}
   - component: {fileID: 7716421533805470678}
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 8360976438681255091}
   _vFXManager: {fileID: 1987168247872795752}
+--- !u!114 &5793145004263050706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009634944453747619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3cd4b2bf69db0f498c8fd8326695508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!65 &2084613681901593162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -110,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: Move
   _actionImage: {fileID: 0}
+  _actionDamage: 0
   _actionCost: 1
   _unitRotationSpeed: 10
   _unitMoveSpeed: 6.2
@@ -128,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: Sprint
   _actionImage: {fileID: 0}
+  _actionDamage: 0
   _actionCost: 2
   _unitRotationSpeed: 11.5
   _unitMoveSpeed: 7
@@ -146,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: Range
   _actionImage: {fileID: 0}
+  _actionDamage: 25
   _actionCost: 2
   _maxShootDistance: 6
 --- !u!114 &9183989590710057222
@@ -162,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionName: Spin
   _actionImage: {fileID: 0}
+  _actionDamage: 0
   _actionCost: 0
 --- !u!1 &3752466390682500600
 GameObject:

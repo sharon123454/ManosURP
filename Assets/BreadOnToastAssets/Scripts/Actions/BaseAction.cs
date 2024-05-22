@@ -9,6 +9,7 @@ public abstract class BaseAction : MonoBehaviour
 {
     [SerializeField] protected string _actionName;
     [SerializeField] protected Image _actionImage;
+    [SerializeField] protected int _actionDamage;
     [SerializeField] protected ActionCost _actionCost = ActionCost.Action;
 
     protected Unit _unit;

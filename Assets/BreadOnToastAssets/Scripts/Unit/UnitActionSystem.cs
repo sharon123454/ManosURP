@@ -9,6 +9,9 @@ public class UnitActionSystem : MonoBehaviour
     public static UnitActionSystem Instance { get; private set; }
 
     public event EventHandler OnActionStart;
+    /// <summary>
+    /// Action ends if false
+    /// </summary>
     public event EventHandler<bool> OnBusyChanged;
     public event EventHandler OnSelectedUnitChanged;
     public event EventHandler OnSelectedActionChanged;

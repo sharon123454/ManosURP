@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class GridSystemVisual : MonoBehaviour
 {
@@ -26,10 +27,8 @@ public class GridSystemVisual : MonoBehaviour
     {
         //needs to be called from somewhere else if grid doesn't begin on Start
         DrawGridSystem();
-    }
-    //Temporarly in update
-    private void Update()
-    {
+        UnitActionSystem.Instance.OnSelectedActionChanged += UnitActionSystem_OnSelectedActionChanged;
+        LevelGrid.Instance.OnAnyUnitMovedGridPosition += LevelGrid_OnAnyUnitMovedGridPosition;
         UpdateGridVisual();
     }
 
@@ -85,6 +84,15 @@ public class GridSystemVisual : MonoBehaviour
         {
             _gridSystemVisualSingleArray[position.x, position.z].Show();
         }
+    }
+
+    private void LevelGrid_OnAnyUnitMovedGridPosition(object sender, EventArgs e)
+    {
+        UpdateGridVisual();
+    }
+    private void UnitActionSystem_OnSelectedActionChanged(object sender, EventArgs empty)
+    {
+        UpdateGridVisual();
     }
 
 }

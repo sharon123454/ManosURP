@@ -37,6 +37,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Base_Map:
+        m_Texture: {fileID: 2800000, guid: 0ad8ff65b1334b142a6e0e65aae26bab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Selection_Texture:
         m_Texture: {fileID: 2800000, guid: 0ad8ff65b1334b142a6e0e65aae26bab, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -72,6 +76,7 @@ Material:
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
     m_Colors:
+    - _Base_Color: {r: 0.099999994, g: 0.19999999, b: 0.5, a: 1}
     - _Selection_CLR: {r: 0.10209423, g: 0.19895288, b: 0.5, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &8547655024121791170

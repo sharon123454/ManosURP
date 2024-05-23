@@ -163,8 +163,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 0.0
+            "x": -216.0,
+            "y": -86.0
         },
         "m_Blocks": [
             {
@@ -180,8 +180,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 200.0
+            "x": -216.0,
+            "y": 113.99999237060547
         },
         "m_Blocks": [
             {
@@ -590,7 +590,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "50bcbbbb43fa4332ba79333b653919f8",
     "m_Id": 0,
-    "m_DisplayName": "Selection_Texture",
+    "m_DisplayName": "Base Map",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1120,10 +1120,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -625.0,
-            "y": 44.00001907348633,
-            "width": 152.0,
-            "height": 33.99996566772461
+            "x": -623.0,
+            "y": 113.99999237060547,
+            "width": 134.0,
+            "height": 33.999977111816409
         }
     },
     "m_Slots": [
@@ -1175,10 +1175,10 @@
     "m_Guid": {
         "m_GuidSerialized": "28c43d9b-0fc3-4a0a-9fd4-1e4155d6a403"
     },
-    "m_Name": "Selection_CLR",
+    "m_Name": "Base Color",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Selection_CLR",
-    "m_DefaultReferenceName": "_Selection_CLR",
+    "m_RefNameGeneratedByDisplayName": "Base Color",
+    "m_DefaultReferenceName": "_Base_Color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1189,10 +1189,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
-        "a": 0.0
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
     },
     "isMainColor": false,
     "m_ColorMode": 1
@@ -1244,10 +1244,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -437.5626220703125,
-            "y": 63.437408447265628,
-            "width": 208.0,
-            "height": 302.0
+            "x": -444.0,
+            "y": 89.0,
+            "width": 130.0,
+            "height": 118.0
         }
     },
     "m_Slots": [
@@ -1267,7 +1267,7 @@
         "x"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": true,
+    "m_PreviewExpanded": false,
     "m_DismissedVersion": 0,
     "m_PreviewMode": 0,
     "m_CustomColors": {
@@ -1362,10 +1362,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -902.0,
-            "y": 148.0,
-            "width": 178.0,
-            "height": 34.00001525878906
+            "x": -832.0,
+            "y": 173.0,
+            "width": 135.00006103515626,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1478,10 +1478,10 @@
     "m_Guid": {
         "m_GuidSerialized": "7603326b-17a2-48a8-9436-42e4d5903872"
     },
-    "m_Name": "Selection_Texture",
+    "m_Name": "Base Map",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Selection_Texture",
-    "m_DefaultReferenceName": "_Selection_Texture",
+    "m_RefNameGeneratedByDisplayName": "Base Map",
+    "m_DefaultReferenceName": "_Base_Map",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1588,7 +1588,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "f4ff6b4cc68e4202a1939cab7e73f543",
     "m_Id": 0,
-    "m_DisplayName": "Selection_CLR",
+    "m_DisplayName": "Base Color",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",

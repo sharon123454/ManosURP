@@ -55,6 +55,9 @@ public class RangeAction : BaseAction
         if (_stateTimer <= 0) { NextState(); }
 
     }
+
+    public int GetActionRange() { return _maxShootDistance; }
+
     private void NextState()
     {
         switch (_currentState)

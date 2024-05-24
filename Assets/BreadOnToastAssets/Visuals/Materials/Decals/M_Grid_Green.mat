@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Grid
+  m_Name: M_Grid_Green
   m_Shader: {fileID: -6465566751694194690, guid: 93485b49b302dc14b93bbc31e4a48c6d,
     type: 3}
   m_Parent: {fileID: 0}
@@ -81,7 +81,8 @@ Material:
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 49
-    m_Colors: []
+    m_Colors:
+    - _Base_Color: {r: 0, g: 33.89676, b: 2.6787329, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1006862925166570612
 MonoBehaviour:

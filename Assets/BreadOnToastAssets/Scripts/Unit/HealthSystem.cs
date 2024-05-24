@@ -44,7 +44,6 @@ public class HealthSystem : MonoBehaviour
     private void OnDeath()
     {
         OnUnitDeath?.Invoke(this, EventArgs.Empty);
-        gameObject.SetActive(false);
     }
 
 }

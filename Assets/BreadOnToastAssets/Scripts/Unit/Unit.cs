@@ -19,6 +19,8 @@ public struct HitPosition
 public class Unit : MonoBehaviour
 {
     public static event EventHandler OnAnyActionPointsChanged;
+    public static event EventHandler OnAnyUnitSpawned;
+    public static event EventHandler OnAnyUnitDead;
 
     [SerializeField] private bool _isEnemy;
     [SerializeField] private List<HitPosition> _unitHitPositionList;
@@ -47,6 +49,7 @@ public class Unit : MonoBehaviour
         LevelGrid.Instance.AddUnitAtGridPosition(_currentGridPosition, this);
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
         _healthSystem.OnUnitDeath += HealthSystem_OnUnitDeath;
+        OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
     }
     //updates character movement
     void Update()
@@ -159,6 +162,8 @@ public class Unit : MonoBehaviour
     {
         //Remove unit from grid
         LevelGrid.Instance.RemoveUnitAtGridPosition(GetGridPosition(), this);
+        gameObject.SetActive(false);
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
 }

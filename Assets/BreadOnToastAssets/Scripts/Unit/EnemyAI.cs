@@ -5,8 +5,15 @@ using System;
 
 public class EnemyAI : MonoBehaviour
 {
+    private enum State { WaitingForEnemyTurn, TakingTurn, Busy }
+
+    private State _state;
     private float _timer;
 
+    private void Awake()
+    {
+        _state = State.WaitingForEnemyTurn;
+    }
     private void Start()
     {
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
@@ -15,18 +22,82 @@ public class EnemyAI : MonoBehaviour
     {
         if (TurnSystem.Instance.IsPlayerTurn()) { return; }
 
-        _timer -= Time.deltaTime;
-        if (_timer <= 0f)
-            TurnSystem.Instance.NextTurn();
+        switch (_state)
+        {
+            case State.WaitingForEnemyTurn:
+                break;
+            case State.TakingTurn:
+                _timer -= Time.deltaTime;
+                if (_timer <= 0f)
+                {
+                    if (TryTakeEnemyAIAction(SetStateTakingTurn))
+                    {
+                        _state = State.Busy;
+                    }
+                    else//No more enemies who can take actions, ends turn
+                    {
+                        TurnSystem.Instance.NextTurn();
+                    }
+                }
+                break;
+            case State.Busy:
+                break;
+        }
     }
     private void OnDisable()
     {
         TurnSystem.Instance.OnTurnChanged -= TurnSystem_OnTurnChanged;
     }
 
-    private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
+    /// <summary>
+    /// Resetting state for the next turn
+    /// </summary>
+    private void SetStateTakingTurn()
     {
-        _timer = 2f;
+        _timer = 0.5f;
+        _state = State.TakingTurn;
+    }
+    /// <summary>
+    /// Goes over all Enemies and checks if they can take Action
+    /// </summary>
+    /// <param name="onEnemyActionComplete"></param>
+    /// <returns></returns>
+    private bool TryTakeEnemyAIAction(Action onEnemyActionComplete)
+    {
+        foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
+        {
+            if (TryTakeEnemyAIAction(enemyUnit, onEnemyActionComplete))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    /// <summary>
+    /// Checks if Enemy Can Take Action
+    /// </summary>
+    /// <param name="enemyUnit"></param>
+    /// <param name="onEnemyActionComplete"></param>
+    /// <returns></returns>
+    private bool TryTakeEnemyAIAction(Unit enemyUnit, Action onEnemyActionComplete)
+    {
+        SpinAction spinAction = enemyUnit.GetSpinAction();
+        GridPosition actionGridPosition = enemyUnit.GetGridPosition();
+
+        if (!spinAction.IsValidActionGridPosition(actionGridPosition)) { return false; }
+        if (!enemyUnit.TrySpendPointsToTakeAction(spinAction)) { return false; }
+
+        spinAction.TakeAction(actionGridPosition, onEnemyActionComplete);
+        return true;
+    }
+
+    private void TurnSystem_OnTurnChanged(object sender, EventArgs empty)
+    {
+        if (!TurnSystem.Instance.IsPlayerTurn())
+        {
+            _state = State.TakingTurn;
+            _timer = 2f;
+        }
     }
 
 }

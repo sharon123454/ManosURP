@@ -17,26 +17,33 @@ public struct GridPosition : IEquatable<GridPosition>
     public static GridPosition operator -(GridPosition a, GridPosition b) { return new GridPosition(a.x - b.x, a.z - b.z); }
 }
 
-public class GridSystem
+public class GridSystem<TGridObject>
 {
     private int _width;
     private int _height;
     private float _cellSize;
-    private GridObject[,] _gridObjectArray;
+    private TGridObject[,] _gridObjectArray;
 
-    public GridSystem(int width, int height, float cellSize)
+    /// <summary>
+    /// Constructor recieves delegagte as to by pass C# limitations on generic constraints
+    /// </summary>
+    /// <param name="width"></param>
+    /// <param name="height"></param>
+    /// <param name="cellSize"></param>
+    /// <param name="createGridObject"></param>
+    public GridSystem(int width, int height, float cellSize, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject)
     {
         _width = width;
         _height = height;
         _cellSize = cellSize;
-        _gridObjectArray = new GridObject[width, height];
+        _gridObjectArray = new TGridObject[width, height];
 
         for (int x = 0; x < _width; x++)
         {
             for (int z = 0; z < _height; z++)
             {
                 GridPosition gridPosition = new GridPosition(x, z);
-                _gridObjectArray[x, z] = new GridObject(this, gridPosition);
+                _gridObjectArray[x, z] = createGridObject(this, gridPosition);
             }
         }
     }
@@ -49,7 +56,7 @@ public class GridSystem
     /// </summary>
     /// <param name="gridPosition"></param>
     /// <returns></returns>
-    public GridObject GetGridObject(GridPosition gridPosition)
+    public TGridObject GetGridObject(GridPosition gridPosition)
     {
         return _gridObjectArray[gridPosition.x, gridPosition.z];
     }
@@ -103,7 +110,7 @@ public class GridSystem
                 GridPosition gridPosition = new GridPosition(x, z);
                 Transform debugTransform = GameObject.Instantiate(debugPrefab, GetWorldPosition(gridPosition), Quaternion.identity, parentObject);
                 GridDebugObject debugObject = debugTransform.GetComponent<GridDebugObject>();
-                debugObject.SetGridObject(GetGridObject(gridPosition));
+                debugObject.SetGridObject(GetGridObject(gridPosition) as GridObject);
             }
         }
     }

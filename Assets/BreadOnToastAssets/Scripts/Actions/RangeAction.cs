@@ -151,7 +151,7 @@ public class RangeAction : BaseAction
         {
             GridPosition = gridPosition,
             //Normalized HP is 0 to 1 and the lower it is the better the action so 1-HpNormalized. multy by 100 so once rounded it's accepted as int
-            ActionValue = 100 + Mathf.RoundToInt(1 - targetUnit.GetHealthNormalized() * 100),//Example- full HP = 100, half HP = 150 (in total action value)
+            ActionValue = 200 + Mathf.RoundToInt(1 - targetUnit.GetHealthNormalized() * 100),//Example- full HP = 100, half HP = 150 (in total action value)
         };
     }
 

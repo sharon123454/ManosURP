@@ -32,6 +32,7 @@ public class Unit : MonoBehaviour
     private HealthSystem _healthSystem;
     private MoveAction _moveAction;
     private SpinAction _spinAction;
+    private RangeAction _rangeAction;
     private BaseAction[] _baseActionArray;
     private int _actionPoints = 1;
     private int _bonusActionPoints = 1;
@@ -40,6 +41,7 @@ public class Unit : MonoBehaviour
     {
         _moveAction = GetComponent<MoveAction>();
         _spinAction = GetComponent<SpinAction>();
+        _rangeAction = GetComponent<RangeAction>();
         _healthSystem = GetComponent<HealthSystem>();
         _baseActionArray = GetComponents<BaseAction>();
     }
@@ -84,6 +86,7 @@ public class Unit : MonoBehaviour
     }
     public int GetActionPoints() { return _actionPoints; }
     public int GetBonusActionPoints() { return _bonusActionPoints; }
+    public float GetHealthNormalized() { return _healthSystem.GetNormalizedHealth(); }
     public List<HitPosition> GetUnitHitPositionList() { return _unitHitPositionList; }
     /// <summary>
     /// Allows Actions to get the units GridPosition without calculations
@@ -120,14 +123,7 @@ public class Unit : MonoBehaviour
         }
         else { return false; }
     }
-    /// <summary>
-    /// Allows UnitActionSystem to reach the Units' Action
-    /// </summary>
-    /// <returns></returns>
-    public MoveAction GetMoveAction() { return _moveAction; }
-    public SpinAction GetSpinAction() { return _spinAction; }
-
-    private bool CanSpendPointsToTakeAction(BaseAction baseAction)
+    public bool CanSpendPointsToTakeAction(BaseAction baseAction)
     {
         switch (baseAction.GetActionCost())
         {
@@ -147,6 +143,13 @@ public class Unit : MonoBehaviour
                 return false;
         }
     }
+    /// <summary>
+    /// Allows UnitActionSystem to reach the Units' Action
+    /// </summary>
+    /// <returns></returns>
+    public MoveAction GetMoveAction() { return _moveAction; }
+    public SpinAction GetSpinAction() { return _spinAction; }
+    public RangeAction GetRangeAction() { return _rangeAction; }
 
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {

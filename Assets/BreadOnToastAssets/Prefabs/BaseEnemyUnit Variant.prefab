@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: a1ef3427cd0c9574293834d49d290427, type: 2}
+    - target: {fileID: 9183989590710057222, guid: b716aa9fea76c524b8314c7098bc8d62,
+        type: 3}
+      propertyPath: _actionCost
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9190652655035294752, guid: b716aa9fea76c524b8314c7098bc8d62,
         type: 3}
       propertyPath: _isEnemy

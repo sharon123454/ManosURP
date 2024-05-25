@@ -56,6 +56,10 @@ public class RangeAction : BaseAction
 
     }
 
+    public int GetTargetAtPosition(GridPosition gridPosition)
+    {
+        return GetValidActionGridPositionList(gridPosition).Count;
+    }
     public int GetActionRange() { return _maxShootDistance; }
 
     private void NextState()
@@ -102,15 +106,24 @@ public class RangeAction : BaseAction
     }
     public override List<GridPosition> GetValidActionGridPositionList()
     {
-        List<GridPosition> validGridPositions = new List<GridPosition>();
         GridPosition unitGridPosition = _unit.GetGridPosition();
+        return GetValidActionGridPositionList(unitGridPosition);
+    }
+    /// <summary>
+    /// Returns valid shootable targets around given GridPosition
+    /// </summary>
+    /// <param name="gridPosition"></param>
+    /// <returns></returns>
+    public List<GridPosition> GetValidActionGridPositionList(GridPosition gridPosition)
+    {
+        List<GridPosition> validGridPositions = new List<GridPosition>();
 
         for (int x = -_maxShootDistance; x <= _maxShootDistance; x++)
         {
             for (int z = -_maxShootDistance; z <= _maxShootDistance; z++)
             {
                 GridPosition offsetGridPosition = new GridPosition(x, z);
-                GridPosition testGridPosition = unitGridPosition + offsetGridPosition;
+                GridPosition testGridPosition = gridPosition + offsetGridPosition;
 
                 if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition)) { continue; } // if position is outside the gridSystem
 
@@ -129,6 +142,17 @@ public class RangeAction : BaseAction
         }
 
         return validGridPositions;
+    }
+    public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
+    {
+        Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
+
+        return new EnemyAIAction
+        {
+            GridPosition = gridPosition,
+            //Normalized HP is 0 to 1 and the lower it is the better the action so 1-HpNormalized. multy by 100 so once rounded it's accepted as int
+            ActionValue = 100 + Mathf.RoundToInt(1 - targetUnit.GetHealthNormalized() * 100),//Example- full HP = 100, half HP = 150 (in total action value)
+        };
     }
 
 }

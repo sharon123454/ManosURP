@@ -5,6 +5,11 @@ using UnityEngine;
 using System;
 
 public enum ActionCost { Free, Action, BonusAction, Both }
+public class EnemyAIAction
+{
+    public GridPosition GridPosition;
+    public int ActionValue;
+}
 public abstract class BaseAction : MonoBehaviour
 {
     [SerializeField] protected string _actionName;
@@ -20,6 +25,32 @@ public abstract class BaseAction : MonoBehaviour
     protected virtual void Awake()
     {
         _unit = GetComponent<Unit>();
+    }
+
+    public EnemyAIAction GetBestEnemyAIAction()
+    {
+        //Creates a list of actions and thier values
+        List<EnemyAIAction> enemyAIActionList = new List<EnemyAIAction>();
+        List<GridPosition> validGridPositionList = GetValidActionGridPositionList();
+
+        //Goes through valid positions and 
+        foreach (GridPosition gridPosition in validGridPositionList)
+        {
+            EnemyAIAction enemyAIAction = GetEnemyAIAction(gridPosition);
+            enemyAIActionList.Add(enemyAIAction);
+        }
+
+        if (enemyAIActionList.Count > 0)
+        {
+            //Actions sorted by action value
+            enemyAIActionList.Sort((EnemyAIAction a, EnemyAIAction b) => b.ActionValue - a.ActionValue);
+            return enemyAIActionList[0];
+        }
+        else
+        {
+            //No possible enemy AI Actions
+            return null;
+        }
     }
 
     public virtual ActionCost GetActionCost() { return _actionCost; }
@@ -42,6 +73,12 @@ public abstract class BaseAction : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public abstract List<GridPosition> GetValidActionGridPositionList();
+    /// <summary>
+    /// Return the gridPosition and the value(how much interests AI) of each action in poistion.
+    /// </summary>
+    /// <param name="gridPosition"></param>
+    /// <returns></returns>
+    public abstract EnemyAIAction GetEnemyAIAction(GridPosition gridPosition);
     /// <summary>
     /// Takes Action based on implementation, usually allows Update to run
     /// </summary>

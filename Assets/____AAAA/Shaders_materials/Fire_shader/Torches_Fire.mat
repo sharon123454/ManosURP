@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-378731162164654319
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Torches_Fire
+  m_Shader: {fileID: -6465566751694194690, guid: 1fff87da8a4602846a81a85247c3f96f, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_836f4ceb9f674dcb8a440dd86f3e380c:
+        m_Texture: {fileID: 2800000, guid: 65558c7f680bf524d995665733359c80, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_4c3d46a249fc40739c638f56f646730d: 0.31
+    - Vector1_5e352bc9cead443589636a603385ed22: 1.12
+    - Vector1_6c75e1a9ee484b31a5baaad1b17b02b7: 3.3
+    - Vector1_84bbb9c6a36f487a91885e01344c075d: 2.09
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - Color_f9dcc9f0bbcd4ce7857b405c3cf31cc6: {r: 77.87429, g: 10.600689, b: 0, a: 0}
+    - Vector2_5d603ddcc0274fa48bc08ba7412c6b46: {r: 0, g: -0.8, b: 0, a: 0}
+    - Vector2_7391de3495bd47bebcef15dcd2dcb162: {r: 0, g: -0.65, b: 0, a: 0}
+  m_BuildTextureStacks: []

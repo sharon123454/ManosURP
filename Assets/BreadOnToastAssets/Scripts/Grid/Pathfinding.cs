@@ -11,7 +11,7 @@ public class Pathfinding : MonoBehaviour
 
     [SerializeField] private Transform _pathfindingDebugObjectPrefab;
     [SerializeField] private bool _pathDebugEnabled = false;
-    [SerializeField] internal LayerMask _obstacleLayerMask;
+    [SerializeField] private LayerMask _obstacleLayerMask;
 
     private GridSystem<PathNode> _gridSystem;
 
@@ -62,6 +62,31 @@ public class Pathfinding : MonoBehaviour
             }
         }
     }
+    public bool IsWalkableGridPosition(GridPosition gridPosition)
+    {
+        return _gridSystem.GetGridObject(gridPosition).IsWalkable();
+    }
+    /// <summary>
+    /// Returns true if path was found to the end grid 
+    /// </summary>
+    /// <param name="startGridPosition"></param>
+    /// <param name="endGridPosition"></param>
+    /// <returns></returns>
+    public bool HasPath(GridPosition startGridPosition, GridPosition endGridPosition)
+    {
+        return FindPath(startGridPosition, endGridPosition, out int pathLength) != null;
+    }
+    /// <summary>
+    /// Returns the true length of the path
+    /// </summary>
+    /// <param name="startGridPosition"></param>
+    /// <param name="endGridPosition"></param>
+    /// <returns></returns>
+    public int GetPathLength(GridPosition startGridPosition, GridPosition endGridPosition)
+    {
+        FindPath(startGridPosition, endGridPosition, out int pathLength);
+        return pathLength;
+    }
     /// <summary>
     /// How close is it to the final Node (streight distance, no walls)
     /// </summary>
@@ -78,14 +103,13 @@ public class Pathfinding : MonoBehaviour
 
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, zDistance) + MOVE_STRAIGHT_COST * remainingDistance;
     }
-    //line 146 needs adressing
     /// <summary>
     /// Tries to find the best path to the endNode and calculates the node path when a path is found
     /// </summary>
     /// <param name="startGridPosition"></param>
     /// <param name="endGridPosition"></param>
     /// <returns></returns>
-    public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition)
+    public List<GridPosition> FindPath(GridPosition startGridPosition, GridPosition endGridPosition, out int pathLength)
     {
         //Nodes queued up for searching
         List<PathNode> openList = new List<PathNode>();
@@ -129,6 +153,7 @@ public class Pathfinding : MonoBehaviour
             if (currentNode == endNode)
             {
                 //Reached final Node
+                pathLength = endNode.GetFCost();
                 return CalculatePath(endNode);
             }
 
@@ -142,8 +167,8 @@ public class Pathfinding : MonoBehaviour
                 //If node already checked then skip
                 if (closedList.Contains(neighbourNode)) { continue; }
 
-                //If not walkable then skip
-                if (!neighbourNode.IsWalkable()/* || neighbourNode.IsOccupied()*/)
+                //If not walkable or has a Unit then skip
+                if (!neighbourNode.IsWalkable() || LevelGrid.Instance.HasAnyUnitOnGridPosition(neighbourNode.GetGridPosition()))
                 {
                     closedList.Add(neighbourNode);
                     continue;
@@ -169,6 +194,7 @@ public class Pathfinding : MonoBehaviour
         }
 
         //No path found
+        pathLength = 0;
         return null;
     }
 

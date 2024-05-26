@@ -68,7 +68,10 @@ public class UnitActionSystemUI : MonoBehaviour
     private void UpdateActionPoints()//NEEDS VISUAL REPRESENTATION
     {
         Unit selectedUnit = UnitActionSystem.Instance.GetSelectedUnit();
-        Debug.Log($"Unit:{selectedUnit.transform} - AP:{selectedUnit.GetActionPoints()}, BAP{selectedUnit.GetBonusActionPoints()}");
+        if (selectedUnit != null)
+        {
+            Debug.Log($"Unit:{selectedUnit.transform} - AP:{selectedUnit.GetActionPoints()}, BAP{selectedUnit.GetBonusActionPoints()}");
+        }
     }
     private void UpdateSelectedButtonVisual()
     {

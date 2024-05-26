@@ -18,6 +18,7 @@ public class RangeAction : BaseAction
     public event EventHandler<OnShootEventArgs> OnShoot;
 
     [SerializeField] private int _maxShootDistance = 6;
+    [SerializeField] private LayerMask _obstacleLayerMask;
 
     private Unit _targetUnit;
     private State _currentState;
@@ -117,6 +118,7 @@ public class RangeAction : BaseAction
     public List<GridPosition> GetValidActionGridPositionList(GridPosition gridPosition)
     {
         List<GridPosition> validGridPositions = new List<GridPosition>();
+        float unitShoulderHeight = 1.7f;
 
         for (int x = -_maxShootDistance; x <= _maxShootDistance; x++)
         {
@@ -131,11 +133,17 @@ public class RangeAction : BaseAction
                 int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
                 if (testDistance > _maxShootDistance) { continue; }
 
-                //if (unitGridPosition == testGridPosition) { continue; } // if position is the same as units'
                 if (!LevelGrid.Instance.HasAnyUnitOnGridPosition(testGridPosition)) { continue; } // if position empty, NO UNIT
 
-                Unit unitAtGridPosition = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
-                if (_unit.IsEnemy() == unitAtGridPosition.IsEnemy()) { continue; } // if units are of the same side
+                Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(testGridPosition);
+                if (_unit.IsEnemy() == targetUnit.IsEnemy()) { continue; } // if units are of the same side
+
+                Vector3 unitWorldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                Vector3 shootDirection = (targetUnit.GetWorldPosition() - unitWorldPosition).normalized;
+                if (Physics.Raycast(unitWorldPosition + Vector3.up * unitShoulderHeight,
+                    shootDirection,
+                    Vector3.Distance(unitWorldPosition, targetUnit.GetWorldPosition()),
+                    _obstacleLayerMask)) { continue; } // Blocked by an Obstacle
 
                 validGridPositions.Add(testGridPosition);
             }

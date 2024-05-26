@@ -27,7 +27,7 @@ public class Pathfinding : MonoBehaviour
         Instance = this;
     }
 
-    public void SetUp(int width, int length, float cellSize)//Needs adressing to block more than just obstacle
+    public void SetUp(int width, int length, float cellSize)
     {
         _gridSystem = new GridSystem<PathNode>(width, length, cellSize,
             (GridSystem<PathNode> gridSystem, GridPosition gridPosition) => new PathNode(gridPosition));
@@ -48,17 +48,6 @@ public class Pathfinding : MonoBehaviour
                 {
                     GetNode(x, z).SetIsWalkable(false);
                 }
-
-                //if true the position has an moveable layer like Unit
-                //if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, movableLayerMask))
-                //{
-                //    SetOccupiedGridPosition(gridPosition, true);
-                //}
-
-                //if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, EnemyobstacleLayerMask))
-                //{
-                //    SetWalkableGridPositionForEnemy(gridPosition, false);
-                //}
             }
         }
     }

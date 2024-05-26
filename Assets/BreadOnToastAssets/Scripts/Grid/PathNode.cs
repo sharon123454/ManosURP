@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using System.Collections;
-using UnityEngine;
-
 public class PathNode
 {
     private GridPosition _gridPosition;
@@ -22,12 +18,15 @@ public class PathNode
     /// G cost + H cost
     /// </summary>
     private int _fCost;
+    private bool _isWalkable = true;
 
     public PathNode(GridPosition gridPosition)
     {
         _gridPosition = gridPosition;
     }
 
+    public bool IsWalkable() { return _isWalkable; }
+    public void SetIsWalkable(bool isWalkable) { _isWalkable = isWalkable; }
     public int GetGCost() { return _gCost; }
     public void SetGCost(int gCost) { _gCost = gCost; }
     public int GetHCost() { return _hCost; }
@@ -43,5 +42,4 @@ public class PathNode
     {
         return _gridPosition.ToString();
     }
-
 }

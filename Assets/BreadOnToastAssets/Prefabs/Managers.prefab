@@ -352,6 +352,9 @@ MonoBehaviour:
   _pathfindingDebugObjectPrefab: {fileID: 6370607194873716113, guid: 26232f1ae1d22ab4a916df761617a53a,
     type: 3}
   _pathDebugEnabled: 1
+  _obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &5964288392749590389
 GameObject:
   m_ObjectHideFlags: 0

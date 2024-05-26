@@ -11,6 +11,7 @@ public class Pathfinding : MonoBehaviour
 
     [SerializeField] private Transform _pathfindingDebugObjectPrefab;
     [SerializeField] private bool _pathDebugEnabled = false;
+    [SerializeField] internal LayerMask _obstacleLayerMask;
 
     private GridSystem<PathNode> _gridSystem;
 
@@ -26,38 +27,40 @@ public class Pathfinding : MonoBehaviour
         Instance = this;
     }
 
-    public void SetUp(int width, int length, float cellSize)
+    public void SetUp(int width, int length, float cellSize)//Needs adressing to block more than just obstacle
     {
-        _gridSystem = new GridSystem<PathNode>(width, length, cellSize, 
+        _gridSystem = new GridSystem<PathNode>(width, length, cellSize,
             (GridSystem<PathNode> gridSystem, GridPosition gridPosition) => new PathNode(gridPosition));
 
         if (_pathDebugEnabled)
             _gridSystem.CreateDebugObjects(_pathfindingDebugObjectPrefab, transform);
 
-        //for (int x = 0; x < width; x++)
-        //{
-        //    for (int z = 0; z < length; z++)
-        //    {
-        //        GridPosition gridPosition = new GridPosition(x, z);
-        //        Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+        for (int x = 0; x < width; x++)
+        {
+            for (int z = 0; z < length; z++)
+            {
+                GridPosition gridPosition = new GridPosition(x, z);
+                Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+                float rayCastOffsetDistance = 5f;
 
-        //        //if true the position has an moveable layer like Unit
-        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, movableLayerMask))
-        //        {
-        //            SetOccupiedGridPosition(gridPosition, true);
-        //        }
+                //If true grid has obstacle, set walkable false
+                if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, _obstacleLayerMask))
+                {
+                    GetNode(x, z).SetIsWalkable(false);
+                }
 
-        //        //if true the position has an obstacle
-        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, obstacleLayerMask))
-        //        {
-        //            SetWalkableGridPosition(gridPosition, false);
-        //        }
-        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, EnemyobstacleLayerMask))
-        //        {
-        //            SetWalkableGridPositionForEnemy(gridPosition, false);
-        //        }
-        //    }
-        //}
+                //if true the position has an moveable layer like Unit
+                //if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, movableLayerMask))
+                //{
+                //    SetOccupiedGridPosition(gridPosition, true);
+                //}
+
+                //if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, EnemyobstacleLayerMask))
+                //{
+                //    SetWalkableGridPositionForEnemy(gridPosition, false);
+                //}
+            }
+        }
     }
     /// <summary>
     /// How close is it to the final Node (streight distance, no walls)
@@ -75,7 +78,7 @@ public class Pathfinding : MonoBehaviour
 
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, zDistance) + MOVE_STRAIGHT_COST * remainingDistance;
     }
-    //line 142 needs adressing
+    //line 146 needs adressing
     /// <summary>
     /// Tries to find the best path to the endNode and calculates the node path when a path is found
     /// </summary>
@@ -139,11 +142,12 @@ public class Pathfinding : MonoBehaviour
                 //If node already checked then skip
                 if (closedList.Contains(neighbourNode)) { continue; }
 
-                //if (!neighbourNode.IsWalkable() || neighbourNode.IsOccupied())
-                //{
-                //    closedList.Add(neighbourNode);
-                //    continue;
-                //}
+                //If not walkable then skip
+                if (!neighbourNode.IsWalkable()/* || neighbourNode.IsOccupied()*/)
+                {
+                    closedList.Add(neighbourNode);
+                    continue;
+                }
 
                 //Move cost from current node to neighbour node
                 int tentativeGCost = currentNode.GetGCost() + CalculateDistance(currentNode.GetGridPosition(), neighbourNode.GetGridPosition());

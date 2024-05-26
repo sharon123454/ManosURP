@@ -62,6 +62,7 @@ public class LevelGrid : MonoBehaviour
     /// <param name="worldPosition"></param>
     /// <returns></returns>
     public int GetFloorLevel(Vector3 worldPosition) { return Mathf.RoundToInt(worldPosition.y / FLOOR_HEIGHT); }
+    public int GetFloorAmount() { return _levelGridFloorAmount; }
 
     #region grid validation methods
     /// <summary>

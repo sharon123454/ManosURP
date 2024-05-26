@@ -29,7 +29,7 @@ public class Pathfinding : MonoBehaviour
 
     public void SetUp(int width, int length, float cellSize)
     {
-        _gridSystem = new GridSystem<PathNode>(width, length, cellSize,
+        _gridSystem = new GridSystem<PathNode>(width, length, cellSize, 0, LevelGrid.FLOOR_HEIGHT,
             (GridSystem<PathNode> gridSystem, GridPosition gridPosition) => new PathNode(gridPosition));
 
         if (_pathDebugEnabled)
@@ -39,7 +39,7 @@ public class Pathfinding : MonoBehaviour
         {
             for (int z = 0; z < length; z++)
             {
-                GridPosition gridPosition = new GridPosition(x, z);
+                GridPosition gridPosition = new GridPosition(x, z, 0);
                 Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
                 float rayCastOffsetDistance = 5f;
 
@@ -115,7 +115,7 @@ public class Pathfinding : MonoBehaviour
             for (int z = 0; z < _gridSystem.GetGridHeight(); z++)
             {
                 //getting position
-                GridPosition gridPosition = new GridPosition(x, z);
+                GridPosition gridPosition = new GridPosition(x, z, 0);
                 //Getting the pathNode
                 PathNode pathNode = _gridSystem.GetGridObject(gridPosition);
 
@@ -195,7 +195,7 @@ public class Pathfinding : MonoBehaviour
     /// <returns></returns>
     private PathNode GetNode(int x, int z)
     {
-        return _gridSystem.GetGridObject(new GridPosition(x, z));
+        return _gridSystem.GetGridObject(new GridPosition(x, z, 0));
     }
     /// <summary>
     /// Returns Grid positions of the path found

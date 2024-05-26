@@ -5,16 +5,17 @@ public struct GridPosition : IEquatable<GridPosition>
 {
     public int x;
     public int z;
+    public int floorLevel;
 
-    public GridPosition(int x, int z) { this.x = x; this.z = z; }
-    public override string ToString() { return $"X: {x}; Z: {z}"; }
-    public override int GetHashCode() { return HashCode.Combine(x, z); }
-    public override bool Equals(object obj) { return obj is GridPosition position && x == position.x && z == position.z; }
+    public GridPosition(int x, int z, int floorLevel) { this.x = x; this.z = z; this.floorLevel = floorLevel; }
+    public override string ToString() { return $"X: {x}; Z: {z}; Floor: {floorLevel}"; }
+    public override int GetHashCode() { return HashCode.Combine(x, z, floorLevel); }
+    public override bool Equals(object obj) { return obj is GridPosition position && x == position.x && z == position.z && floorLevel == position.floorLevel; }
     public bool Equals(GridPosition other) { return this == other; }
     public static bool operator !=(GridPosition a, GridPosition b) { return !(a == b); }
-    public static bool operator ==(GridPosition a, GridPosition b) { return a.x == b.x && a.z == b.z; }
-    public static GridPosition operator +(GridPosition a, GridPosition b) { return new GridPosition(a.x + b.x, a.z + b.z); }
-    public static GridPosition operator -(GridPosition a, GridPosition b) { return new GridPosition(a.x - b.x, a.z - b.z); }
+    public static bool operator ==(GridPosition a, GridPosition b) { return a.x == b.x && a.z == b.z && a.floorLevel == b.floorLevel; }
+    public static GridPosition operator +(GridPosition a, GridPosition b) { return new GridPosition(a.x + b.x, a.z + b.z, a.floorLevel + b.floorLevel); }
+    public static GridPosition operator -(GridPosition a, GridPosition b) { return new GridPosition(a.x - b.x, a.z - b.z, a.floorLevel - b.floorLevel); }
 }
 
 public class GridSystem<TGridObject>
@@ -22,6 +23,8 @@ public class GridSystem<TGridObject>
     private int _width;
     private int _height;
     private float _cellSize;
+    private int _floorLevel;
+    private float _floorHeight;
     private TGridObject[,] _gridObjectArray;
 
     /// <summary>
@@ -31,18 +34,20 @@ public class GridSystem<TGridObject>
     /// <param name="height"></param>
     /// <param name="cellSize"></param>
     /// <param name="createGridObject"></param>
-    public GridSystem(int width, int height, float cellSize, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject)
+    public GridSystem(int width, int height, float cellSize, int floorLevel, float floorHeight, Func<GridSystem<TGridObject>, GridPosition, TGridObject> createGridObject)
     {
         _width = width;
         _height = height;
         _cellSize = cellSize;
+        _floorLevel = floorLevel;
+        _floorHeight = floorHeight;
         _gridObjectArray = new TGridObject[width, height];
 
         for (int x = 0; x < _width; x++)
         {
             for (int z = 0; z < _height; z++)
             {
-                GridPosition gridPosition = new GridPosition(x, z);
+                GridPosition gridPosition = new GridPosition(x, z, floorLevel);
                 _gridObjectArray[x, z] = createGridObject(this, gridPosition);
             }
         }
@@ -71,7 +76,8 @@ public class GridSystem<TGridObject>
         return gridPosition.x >= 0 &&
                 gridPosition.z >= 0 &&
                 gridPosition.x < _width &&
-                gridPosition.z < _height;
+                gridPosition.z < _height &&
+                gridPosition.floorLevel == _floorLevel;
     }
 
     /// <summary>
@@ -81,7 +87,8 @@ public class GridSystem<TGridObject>
     /// <returns></returns>
     public Vector3 GetWorldPosition(GridPosition gridPosition)
     {
-        return new Vector3(gridPosition.x, 0, gridPosition.z) * _cellSize;
+        return new Vector3(gridPosition.x, 0, gridPosition.z) * _cellSize +
+            new Vector3(0, gridPosition.floorLevel, 0) * _floorHeight;
     }
     //If you don't need mathematical, access the GridObjects' GridPosition
     /// <summary>
@@ -93,7 +100,8 @@ public class GridSystem<TGridObject>
     {
         return new GridPosition(
             Mathf.RoundToInt(worldPosition.x / _cellSize),
-            Mathf.RoundToInt(worldPosition.z / _cellSize));
+            Mathf.RoundToInt(worldPosition.z / _cellSize),
+            _floorLevel);
     }
 
 
@@ -107,7 +115,7 @@ public class GridSystem<TGridObject>
         {
             for (int z = 0; z < _height; z++)
             {
-                GridPosition gridPosition = new GridPosition(x, z);
+                GridPosition gridPosition = new GridPosition(x, z, _floorLevel);
                 Transform debugTransform = GameObject.Instantiate(debugPrefab, GetWorldPosition(gridPosition), Quaternion.identity, parentObject);
                 GridDebugObject debugObject = debugTransform.GetComponent<GridDebugObject>();
                 debugObject.SetGridObject(GetGridObject(gridPosition));

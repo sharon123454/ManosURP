@@ -49,7 +49,7 @@ public class GridSystemVisual : MonoBehaviour
         {
             for (int z = 0; z < _gridSystemHeight; z++)
             {
-                GridPosition gridPosition = new GridPosition(x, z);
+                GridPosition gridPosition = new GridPosition(x, z, 0);
                 Transform gridSystemVisualSingleTransform =
                     Instantiate(_gridSystemVisualSinglePrefab, LevelGrid.Instance.GetWorldPosition(gridPosition), Quaternion.identity, transform);
 
@@ -79,7 +79,7 @@ public class GridSystemVisual : MonoBehaviour
                     break;
                 case RangeAction rangeAction:
                     gridVisualType = GridVisualType.Red;
-                    ShowCircularGridPositionRange(selectedUnit.GetGridPosition(), rangeAction.GetActionRange(), GridVisualType.Orange);
+                    ShowGridPositionRangeCircle(selectedUnit.GetGridPosition(), rangeAction.GetActionRange(), GridVisualType.Orange);
                     break;
             }
 
@@ -112,7 +112,7 @@ public class GridSystemVisual : MonoBehaviour
     /// <summary>
     /// Shows wanted grid positions by GridPosition and Range (Circular)
     /// </summary>
-    private void ShowCircularGridPositionRange(GridPosition gridPosition, int range, GridVisualType gridVisualType)
+    private void ShowGridPositionRangeCircle(GridPosition gridPosition, int range, GridVisualType gridVisualType)
     {
         List<GridPosition> gridPositionList = new List<GridPosition>();
 
@@ -120,13 +120,34 @@ public class GridSystemVisual : MonoBehaviour
         {
             for (int z = -range; z <= range; z++)
             {
-                GridPosition testGridPosition = gridPosition + new GridPosition(x, z);
+                GridPosition testGridPosition = gridPosition + new GridPosition(x, z, 0);
 
                 if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition)) { continue; } // if position is outside the gridSystem
 
                 //Collective distance from position. Makes valid grid circular instead of square
                 int testDistance = Mathf.Abs(x) + Mathf.Abs(z);
                 if (testDistance > range) { continue; }
+
+                gridPositionList.Add(testGridPosition);
+            }
+        }
+
+        ShowGridPositionList(gridPositionList, gridVisualType);
+    }
+    /// <summary>
+    /// Shows wanted grid positions by GridPosition and Range (Square)
+    /// </summary>
+    private void ShowGridPositionRangeSquare(GridPosition gridPosition, int range, GridVisualType gridVisualType)
+    {
+        List<GridPosition> gridPositionList = new List<GridPosition>();
+
+        for (int x = -range; x <= range; x++)
+        {
+            for (int z = -range; z <= range; z++)
+            {
+                GridPosition testGridPosition = gridPosition + new GridPosition(x, z, 0);
+
+                if (!LevelGrid.Instance.IsValidGridPosition(testGridPosition)) { continue; } // if position is outside the gridSystem
 
                 gridPositionList.Add(testGridPosition);
             }

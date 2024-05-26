@@ -5,6 +5,8 @@ using System;
 
 public class LevelGrid : MonoBehaviour
 {
+    public const float FLOOR_HEIGHT = 2f;
+
     public static LevelGrid Instance { get; private set; }
     public event EventHandler OnAnyUnitMovedGridPosition;
 
@@ -13,8 +15,9 @@ public class LevelGrid : MonoBehaviour
     [SerializeField] private int _levelGridWidth = 10;
     [SerializeField] private int _levelGridHeight = 10;
     [SerializeField] private float _levelGridCellSize = 2f;
+    [SerializeField] private int _levelGridFloorAmount = 3;
 
-    private GridSystem<GridObject> _gridSystem;
+    private List<GridSystem<GridObject>> _gridSystemList;
 
     private void Awake()
     {
@@ -26,11 +29,17 @@ public class LevelGrid : MonoBehaviour
         }
 
         Instance = this;
-        _gridSystem = new GridSystem<GridObject>(_levelGridWidth, _levelGridHeight, _levelGridCellSize, 
-            (GridSystem<GridObject> gridSystem, GridPosition gridPosition) => new GridObject(gridSystem, gridPosition));
+        _gridSystemList = new List<GridSystem<GridObject>>();
+        for (int floorLevel = 0; floorLevel < _levelGridFloorAmount; floorLevel++)
+        {
+            GridSystem<GridObject> gridSystem = new GridSystem<GridObject>(_levelGridWidth, _levelGridHeight, _levelGridCellSize, floorLevel, FLOOR_HEIGHT,
+                (GridSystem<GridObject> gridSystem, GridPosition gridPosition) => new GridObject(gridSystem, gridPosition));
 
-        if (_gridDebugEnabled)
-            _gridSystem.CreateDebugObjects(_gridDebugObjectPrefab, transform);
+            if (_gridDebugEnabled)
+                gridSystem.CreateDebugObjects(_gridDebugObjectPrefab, transform);
+
+            _gridSystemList.Add(gridSystem);
+        }
     }
     private void Start()
     {
@@ -44,9 +53,15 @@ public class LevelGrid : MonoBehaviour
     /// <returns></returns>
     public List<Unit> GetUnitListAtGridPosition(GridPosition gridPosition)
     {
-        GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
+        GridObject gridObject = GetGridSystem(gridPosition.floorLevel).GetGridObject(gridPosition);
         return gridObject.GetUnitList();
     }
+    /// <summary>
+    /// Returns floor level through world position
+    /// </summary>
+    /// <param name="worldPosition"></param>
+    /// <returns></returns>
+    public int GetFloorLevel(Vector3 worldPosition) { return Mathf.RoundToInt(worldPosition.y / FLOOR_HEIGHT); }
 
     #region grid validation methods
     /// <summary>
@@ -56,7 +71,7 @@ public class LevelGrid : MonoBehaviour
     /// <returns></returns>
     public bool IsValidGridPosition(GridPosition gridPosition)
     {
-        return _gridSystem.IsValidGridPosition(gridPosition);
+        return GetGridSystem(gridPosition.floorLevel).IsValidGridPosition(gridPosition);
     }
     /// <summary>
     /// Returns true if grid position is occupied by other unit
@@ -65,12 +80,12 @@ public class LevelGrid : MonoBehaviour
     /// <returns></returns>
     public bool HasAnyUnitOnGridPosition(GridPosition gridPosition)
     {
-        GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
+        GridObject gridObject = GetGridSystem(gridPosition.floorLevel).GetGridObject(gridPosition);
         return gridObject.HasAnyUnits();
     }
     public Unit GetUnitAtGridPosition(GridPosition gridPosition)
     {
-        GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
+        GridObject gridObject = GetGridSystem(gridPosition.floorLevel).GetGridObject(gridPosition);
         return gridObject.GetUnit();
     }
     #endregion
@@ -90,12 +105,12 @@ public class LevelGrid : MonoBehaviour
     //Need to change to private v ?
     public void RemoveUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
+        GridObject gridObject = GetGridSystem(gridPosition.floorLevel).GetGridObject(gridPosition);
         gridObject.RemoveUnit(unit);
     }
     public void AddUnitAtGridPosition(GridPosition gridPosition, Unit unit)
     {
-        GridObject gridObject = _gridSystem.GetGridObject(gridPosition);
+        GridObject gridObject = GetGridSystem(gridPosition.floorLevel).GetGridObject(gridPosition);
         gridObject.AddUnit(unit);
     }
 
@@ -107,7 +122,8 @@ public class LevelGrid : MonoBehaviour
     /// <returns></returns>
     public GridPosition GetGridPosition(Vector3 worldPosition)
     {
-        return _gridSystem.GetGridPosition(worldPosition);
+        int floorLevel = GetFloorLevel(worldPosition);
+        return GetGridSystem(floorLevel).GetGridPosition(worldPosition);
     }
     /// <summary>
     /// Getting gridPosition in worldPosition vector from GridSystem
@@ -116,18 +132,20 @@ public class LevelGrid : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetWorldPosition(GridPosition gridPosition)
     {
-        return _gridSystem.GetWorldPosition(gridPosition);
+        return GetGridSystem(gridPosition.floorLevel).GetWorldPosition(gridPosition);
     }
     /// <summary>
     /// Getting this levels' gridSystem width
     /// </summary>
     /// <returns></returns>
-    public int GetGridWidth() { return _gridSystem.GetGridWidth(); }
+    public int GetGridWidth() { return GetGridSystem(0).GetGridWidth(); }
     /// <summary>
     /// Getting this levels' gridSystem height
     /// </summary>
     /// <returns></returns>
-    public int GetGridHeight() { return _gridSystem.GetGridHeight(); }
+    public int GetGridHeight() { return GetGridSystem(0).GetGridHeight(); }
     #endregion
+
+    private GridSystem<GridObject> GetGridSystem(int floorLevel) { return _gridSystemList[floorLevel]; }
 
 }

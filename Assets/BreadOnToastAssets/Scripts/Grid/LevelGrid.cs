@@ -32,6 +32,10 @@ public class LevelGrid : MonoBehaviour
         if (_gridDebugEnabled)
             _gridSystem.CreateDebugObjects(_gridDebugObjectPrefab, transform);
     }
+    private void Start()
+    {
+        Pathfinding.Instance.SetUp(_levelGridWidth, _levelGridHeight, _levelGridCellSize);
+    }
 
     /// <summary>
     /// Accesses the GridObject in the position and returns the Units

@@ -24,14 +24,41 @@ public class Pathfinding : MonoBehaviour
         }
 
         Instance = this;
-        //needs to be initialized some place else
-        _gridSystem = new GridSystem<PathNode>(10, 10, 2f,
+    }
+
+    public void SetUp(int width, int length, float cellSize)
+    {
+        _gridSystem = new GridSystem<PathNode>(width, length, cellSize, 
             (GridSystem<PathNode> gridSystem, GridPosition gridPosition) => new PathNode(gridPosition));
 
         if (_pathDebugEnabled)
             _gridSystem.CreateDebugObjects(_pathfindingDebugObjectPrefab, transform);
-    }
 
+        //for (int x = 0; x < width; x++)
+        //{
+        //    for (int z = 0; z < length; z++)
+        //    {
+        //        GridPosition gridPosition = new GridPosition(x, z);
+        //        Vector3 worldPosition = LevelGrid.Instance.GetWorldPosition(gridPosition);
+
+        //        //if true the position has an moveable layer like Unit
+        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, movableLayerMask))
+        //        {
+        //            SetOccupiedGridPosition(gridPosition, true);
+        //        }
+
+        //        //if true the position has an obstacle
+        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, obstacleLayerMask))
+        //        {
+        //            SetWalkableGridPosition(gridPosition, false);
+        //        }
+        //        if (Physics.Raycast(worldPosition + Vector3.down * rayCastOffsetDistance, Vector3.up, rayCastOffsetDistance * 2, EnemyobstacleLayerMask))
+        //        {
+        //            SetWalkableGridPositionForEnemy(gridPosition, false);
+        //        }
+        //    }
+        //}
+    }
     /// <summary>
     /// How close is it to the final Node (streight distance, no walls)
     /// </summary>
@@ -48,7 +75,7 @@ public class Pathfinding : MonoBehaviour
 
         return MOVE_DIAGONAL_COST * Mathf.Min(xDistance, zDistance) + MOVE_STRAIGHT_COST * remainingDistance;
     }
-    //line 115 needs adressing
+    //line 142 needs adressing
     /// <summary>
     /// Tries to find the best path to the endNode and calculates the node path when a path is found
     /// </summary>
